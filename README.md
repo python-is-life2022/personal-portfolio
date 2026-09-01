@@ -1,26 +1,87 @@
-# Amir Mostafa Portfolio
+# 👨‍💻 Amir Mostafa Kharazi | Personal Portfolio
 
-A responsive dark/neon portfolio inspired by the supplied reference.
+<div align="center">
 
-## Structure
+### Web Developer • AI Enthusiast • Machine Learning Developer
 
-- `index.html` — complete page structure
-- `css/style.css` — responsive visual system
-- `js/script.js` — animated neural network, navigation, reveal animations and project filters
-- `assets/images/amir.jpg` — temporary portrait crop from the supplied reference
+A modern and responsive personal portfolio website showcasing my projects, technical skills, and journey in **Web Development** and **Artificial Intelligence**.
 
-## Replace your portrait
+<br>
 
-Put your clean portrait at:
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-`assets/images/amir.jpg`
+</div>
 
-No other code changes are required.
+---
 
-## Replace links
+## 🚀 About The Project
 
-Search `https://github.com/`, `https://www.linkedin.com/`, and `hello@example.com` in `index.html` and replace them with your real links.
+This repository contains the source code for my personal portfolio website.
 
-## Run
+The website is designed to showcase:
 
-Open `index.html` directly in a browser, or use VS Code Live Server.
+- 💻 My Web Development projects
+- 🤖 Artificial Intelligence and Machine Learning projects
+- 🧠 Technical skills and technologies
+- 📂 Featured GitHub repositories
+- 📬 Contact and social media links
+
+The design follows a modern **dark and neon-inspired UI**, with interactive animations and a responsive layout.
+
+---
+
+## ✨ Features
+
+- 🎨 Modern dark/neon user interface
+- 📱 Fully responsive design
+- 🧠 Animated neural network background
+- ✨ Smooth reveal animations
+- 🧭 Interactive navigation
+- 🔎 Project filtering system
+- ⚡ Lightweight and fast
+- 🌐 Built with pure HTML, CSS, and JavaScript
+
+---
+
+## 🛠️ Technologies Used
+
+<div align="center">
+
+| Technology | Purpose |
+|---|---|
+| 🌐 HTML5 | Website Structure |
+| 🎨 CSS3 | Styling & Responsive Design |
+| ⚡ JavaScript | Interactions & Animations |
+
+</div>
+
+---
+
+## 📁 Project Structure
+
+```text
+personal-portfolio/
+│
+├── assets/
+│   └── images/
+│
+├── css/
+│   └── style.css
+│
+├── js/
+│   └── script.js
+│
+├── index.html
+└── README.md
+```
+## 🧠 Website Sections
+
+The portfolio includes the following sections:
+
+* 🏠 Home
+* 👨‍💻 About Me
+* 🛠️ Skills
+* 📂 Projects
+* 📬 Contact

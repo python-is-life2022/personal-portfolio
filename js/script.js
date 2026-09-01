@@ -120,6 +120,9 @@ const navLinks = [...document.querySelectorAll("nav a")];
 
 const observer = new IntersectionObserver(
   (entries) => {
+    // اگر در موبایل باشد، کلاس اکتیو اضافه نکند
+    if (window.innerWidth <= 760) return;
+
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         navLinks.forEach((l) =>
@@ -141,6 +144,7 @@ const revealObserver = new IntersectionObserver(
   { threshold: 0.12 }
 );
 document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+
 
 /* ==========================================================
    4. PROJECTS FILTER

@@ -1806,13 +1806,14 @@ footer {
 
   /* افکت جدید Hover و Active برای موبایل */
   .navbar > nav a:hover,
-  .navbar > nav a:active,
-  .navbar > nav a.active {
+  .navbar > nav a:focus-visible {
     color: var(--lime);
     background: rgba(217, 255, 50, 0.08);
     border-color: rgba(217, 255, 50, 0.28);
     transform: translateX(5px);
-    box-shadow: 0 0 15px rgba(217, 255, 50, 0.08), inset 0 0 10px rgba(217, 255, 50, 0.04);
+    box-shadow:
+      0 0 15px rgba(217, 255, 50, 0.08),
+      inset 0 0 10px rgba(217, 255, 50, 0.04);
   }
 }
 

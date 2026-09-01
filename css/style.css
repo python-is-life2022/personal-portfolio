@@ -1687,3 +1687,120 @@ footer {
     white-space: nowrap;
   }
 }
+
+
+/* ===== Final mobile navbar alignment fix ===== */
+@media (max-width: 760px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    min-height: 68px;
+    height: 68px;
+    overflow: visible;
+  }
+
+  .brand {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  /* Keep Let's Talk immediately before the hamburger */
+  .nav-actions {
+    order: 2;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .nav-actions .talk-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .menu-toggle {
+    order: 3;
+    flex: 0 0 44px;
+    box-sizing: border-box;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid rgba(24, 217, 232, 0.45);
+    border-radius: 12px;
+    background: rgba(7, 17, 26, 0.92);
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+  }
+
+  .menu-toggle:focus,
+  .menu-toggle:active {
+    outline: none;
+    background: rgba(7, 17, 26, 0.92);
+  }
+
+  .menu-toggle:hover {
+    transform: none;
+    background: rgba(7, 17, 26, 0.92);
+    border-color: rgba(24, 217, 232, 0.7);
+  }
+
+  .menu-toggle span {
+    left: 50%;
+    width: 20px;
+    margin-left: -10px;
+  }
+
+  .navbar > nav {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    left: 0;
+    width: auto;
+    box-sizing: border-box;
+    z-index: 50;
+  }
+}
+
+@media (max-width: 500px) {
+  .navbar {
+    gap: 8px;
+    height: 66px;
+    min-height: 66px;
+  }
+
+  .menu-toggle {
+    flex-basis: 42px;
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
+  }
+
+  .menu-toggle span:nth-child(1) { top: 13px; }
+  .menu-toggle span:nth-child(2) { top: 20px; }
+  .menu-toggle span:nth-child(3) { top: 27px; }
+
+  .menu-toggle.active span:nth-child(1),
+  .menu-toggle.active span:nth-child(3) {
+    top: 20px;
+  }
+
+  .nav-actions .talk-btn {
+    padding: 10px 13px;
+  }
+}

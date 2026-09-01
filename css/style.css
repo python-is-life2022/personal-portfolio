@@ -1765,7 +1765,7 @@ footer {
     margin-left: -10px;
   }
 
-  .navbar > nav {
+ .navbar > nav {
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
@@ -1773,6 +1773,46 @@ footer {
     width: auto;
     box-sizing: border-box;
     z-index: 50;
+    padding: 14px;
+    background: rgba(10, 19, 29, 0.96);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(24, 217, 232, 0.2);
+    border-radius: 18px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(24, 217, 232, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* حذف خط زیرین دسکتاپ در موبایل */
+  .navbar > nav a::after {
+    display: none;
+  }
+
+  /* استایل پیش‌فرض آیتم‌ها در موبایل */
+  .navbar > nav a {
+    width: 100%;
+    padding: 13px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    color: #cfd8dc;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+  }
+
+  /* افکت جدید Hover و Active برای موبایل */
+  .navbar > nav a:hover,
+  .navbar > nav a:active,
+  .navbar > nav a.active {
+    color: var(--lime);
+    background: rgba(217, 255, 50, 0.08);
+    border-color: rgba(217, 255, 50, 0.28);
+    transform: translateX(5px);
+    box-shadow: 0 0 15px rgba(217, 255, 50, 0.08), inset 0 0 10px rgba(217, 255, 50, 0.04);
   }
 }
 

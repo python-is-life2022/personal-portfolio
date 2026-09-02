@@ -1372,6 +1372,13 @@ footer {
 }
 
 .project-art.co2 {
+    background-image: url('../assets/images/co2.png');
+    background-size: cover;
+    background-position: center 42%;
+    position: relative;
+}
+
+.project-art.co2 {
     background: url("../assets/images/co2.png") center center / cover no-repeat !important;
 }
 

@@ -1379,6 +1379,22 @@ footer {
 .project-card:hover .project-art.cifar::after {
     background: rgba(5, 6, 13, 0.1); /* شفاف‌تر شدن در حالت هاور */
 }
+/*co2*/
+.project-art.co2::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 6, 13, 0.4); /* همخوانی با تم #05060d */
+    transition: background 0.3s ease;
+}
+
+.project-card:hover .project-art.co2::after {
+    background: rgba(5, 6, 13, 0.1); /* شفاف‌تر شدن در حالت هاور */
+}
+
 /* استایل برای تصویر پروژه ارقام فارسی */
 .project-art.digits {
     background-image: url('../assets/images/persian-digits.png');

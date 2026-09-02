@@ -1347,7 +1347,7 @@ footer {
 }
 .project-art {
   width: 100%;
-  height: 205px; /* در صورت نیاز بین 190 تا 230px تنظیم کن */
+  height: 205px; 
   overflow: hidden;
   position: relative;
   border-bottom: 1px solid rgba(24, 217, 232, 0.14);
@@ -1395,6 +1395,13 @@ footer {
     background: rgba(5, 6, 13, 0.1); /* شفاف‌تر شدن در حالت هاور */
 }
 
+.project-art.co2 {
+  background-image: url('../assets/images/co2.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
 /* استایل برای تصویر پروژه ارقام فارسی */
 .project-art.digits {
     background-image: url('../assets/images/persian-digits.png');
@@ -1402,7 +1409,6 @@ footer {
     background-position: center 42%;
     position: relative;
 }
-
 /* افکت تاریکی برای خوانایی بهتر متن روی تصویر */
 .project-art.digits::after {
     content: '';

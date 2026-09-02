@@ -54,9 +54,6 @@ button {
   margin: auto;
 }
 
-/* ========================================
-   NAVBAR
-======================================== */
 
 .navbar {
   width: min(1120px, calc(100% - 48px));
@@ -218,9 +215,7 @@ button {
   cursor: pointer;
 }
 
-/* ========================================
-   HERO
-======================================== */
+
 
 .hero {
   position: relative;
@@ -304,9 +299,7 @@ button {
   color: var(--lime);
 }
 
-/* ========================================
-   FIND ME ON
-======================================== */
+
 
 .find-me {
   margin-top: 24px;
@@ -424,9 +417,7 @@ button {
   transform-origin: center bottom;
 }
 
-/* ========================================
-   QUICK STRIP
-======================================== */
+
 
 .quick-strip {
   position: absolute;
@@ -509,9 +500,7 @@ button {
   font-size: 10px;
 }
 
-/* ========================================
-   SECTION HEADER
-======================================== */
+
 
 .section-heading {
   padding: 65px 0 30px;
@@ -532,9 +521,7 @@ button {
   box-shadow: 0 0 12px rgba(217, 255, 50, 0.3);
 }
 
-/* ========================================
-   ABOUT
-======================================== */
+
 
 .about {
   padding-top: 15px;
@@ -899,9 +886,7 @@ button {
   display: none;
 }
 
-/* ========================================
-   EXPERIENCE
-======================================== */
+
 
 .timeline {
   position: relative;
@@ -952,9 +937,7 @@ button {
   line-height: 1.7;
 }
 
-/* ========================================
-   CONTACT / FOOTER
-======================================== */
+
 
 .contact-card {
   display: flex;
@@ -980,9 +963,7 @@ footer {
   letter-spacing: 0.6px;
 }
 
-/* ========================================
-   SCROLL REVEAL
-======================================== */
+
 
 .reveal {
   opacity: 0;
@@ -995,9 +976,7 @@ footer {
   transform: none;
 }
 
-/* ========================================
-   RESPONSIVE MEDIA QUERIES
-======================================== */
+
 
 @media (max-width: 1050px) and (min-width: 761px) {
   .navbar > nav {
@@ -1030,7 +1009,7 @@ footer {
     gap: 12px;
   }
 
-  /* Tablet: 2 Cards */
+
   .skill-card {
     flex: 0 0 calc((100% - 12px) / 2);
   }
@@ -1086,7 +1065,7 @@ footer {
     font-size: 9px;
   }
 
-  /* Mobile Hero Layout */
+
   .hero {
     display: flex;
     flex-direction: column;
@@ -1109,7 +1088,6 @@ footer {
     max-width: 520px;
   }
 
-  /* Keep the portrait separate from the text on mobile */
   .hero-visual {
     position: relative;
     inset: auto;
@@ -1138,7 +1116,6 @@ footer {
     height: min(90vw, 420px);
   }
 
-  /* Quick stats become a normal block instead of overlapping the portrait */
   .quick-strip {
     position: relative;
     right: auto;
@@ -1356,7 +1333,6 @@ footer {
   background-repeat: no-repeat;
   background-position: center;
 }
-/* استایل برای تصویر کارت CIFAR-100 */
 .project-art.cifar {
     background-image: url('../assets/images/cifar100.png');
     background-size: cover;
@@ -1364,7 +1340,7 @@ footer {
     position: relative;
 }
 
-/* افکت روی تصویر برای هماهنگی با تم تاریک */
+
 .project-art.cifar::after {
     content: '';
     position: absolute;
@@ -1372,12 +1348,12 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(5, 6, 13, 0.4); /* همخوانی با تم #05060d */
+    background: rgba(5, 6, 13, 0.4); 
     transition: background 0.3s ease;
 }
 
 .project-card:hover .project-art.cifar::after {
-    background: rgba(5, 6, 13, 0.1); /* شفاف‌تر شدن در حالت هاور */
+    background: rgba(5, 6, 13, 0.1); 
 }
 /*co2*/
 .project-art.co2::after {
@@ -1387,29 +1363,25 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(5, 6, 13, 0.4); /* همخوانی با تم #05060d */
+    background: rgba(5, 6, 13, 0.4); 
     transition: background 0.3s ease;
 }
 
 .project-card:hover .project-art.co2::after {
-    background: rgba(5, 6, 13, 0.1); /* شفاف‌تر شدن در حالت هاور */
+    background: rgba(5, 6, 13, 0.1); 
 }
 
 .project-art.co2 {
-  background-image: url('../assets/images/co2.png');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+    background: url("../assets/images/co2.png") center center / cover no-repeat !important;
 }
 
-/* استایل برای تصویر پروژه ارقام فارسی */
 .project-art.digits {
     background-image: url('../assets/images/persian-digits.png');
     background-size: cover;
     background-position: center 42%;
     position: relative;
 }
-/* افکت تاریکی برای خوانایی بهتر متن روی تصویر */
+
 .project-art.digits::after {
     content: '';
     position: absolute;
@@ -1417,7 +1389,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(5, 6, 13, 0.4); /* کمی تیره تر برای تم نئونی */
+    background: rgba(5, 6, 13, 0.4); 
     transition: background 0.3s ease;
 }
 
@@ -1440,7 +1412,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(5, 6, 13, 0.4); /* کمی تیره تر برای تم نئونی */
+    background: rgba(5, 6, 13, 0.4); 
     transition: background 0.3s ease;
 }
 
@@ -1448,7 +1420,7 @@ footer {
     background: rgba(5, 6, 13, 0.15);
 }
 
-/* استایل فعلی کارت را حفظ کن */
+
 .project-card {
   position: relative;
   isolation: isolate;
@@ -1461,7 +1433,7 @@ footer {
     border-color 0.3s ease;
 }
 
-/* لایه‌ی چرخان دور کارت */
+
 .project-card::before {
   content: "";
   position: absolute;
@@ -1477,7 +1449,7 @@ footer {
     transparent 360deg
   );
 
-  /* فقط حاشیه باقی بماند */
+  
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -1493,7 +1465,7 @@ footer {
   transition: opacity 0.3s ease;
 }
 
-/* برای جلوگیری از تغییر ابعاد داخلی کارت */
+
 .project-card::after {
   content: "";
   position: absolute;
@@ -1504,14 +1476,14 @@ footer {
   pointer-events: none;
 }
 
-/* متغیر قابل انیمیشن */
+
 @property --border-angle {
   syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
 }
 
-/* حالت hover */
+
 .project-card:hover {
   transform: translateY(-6px);
   border-color: transparent;
@@ -1531,7 +1503,7 @@ footer {
   }
 }
 
-/* احترام به تنظیمات کاهش حرکت کاربر */
+
 @media (prefers-reduced-motion: reduce) {
   .project-card,
   .project-card::before {
@@ -1541,7 +1513,7 @@ footer {
 }
 
 
-/* ===== Mobile navigation & portrait refinements ===== */
+
 .mobile-portrait {
   display: none;
 }
@@ -1598,7 +1570,7 @@ footer {
     gap: 10px;
   }
 
-  /* Keep Let's Talk and hamburger together on the right side */
+  
   .navbar {
     display: grid;
     grid-template-columns: 1fr auto auto;
@@ -1642,7 +1614,7 @@ footer {
     pointer-events: auto;
   }
 
-  /* Portrait appears only on mobile, between HELLO and the name */
+  
   .mobile-portrait {
     display: block;
     width: 100%;
@@ -1679,7 +1651,7 @@ footer {
     height: min(72vw, 280px);
   }
 
-  /* Hide the desktop visual area on mobile */
+  
   .hero > .hero-visual {
     display: none;
   }
@@ -1711,7 +1683,7 @@ footer {
 }
 
 
-/* ===== Final mobile navbar alignment fix ===== */
+
 @media (max-width: 760px) {
   .navbar {
     display: flex;
@@ -1728,7 +1700,7 @@ footer {
     min-width: 0;
   }
 
-  /* Keep Let's Talk immediately before the hamburger */
+  
   .nav-actions {
     order: 2;
     flex: 0 0 auto;
@@ -1806,12 +1778,12 @@ footer {
     gap: 6px;
   }
 
-  /* حذف خط زیرین دسکتاپ در موبایل */
+
   .navbar > nav a::after {
     display: none;
   }
 
-  /* استایل پیش‌فرض آیتم‌ها در موبایل */
+
   .navbar > nav a {
     width: 100%;
     padding: 13px 18px;
@@ -1826,7 +1798,7 @@ footer {
     align-items: center;
   }
 
-  /* افکت جدید Hover و Active برای موبایل */
+
   .navbar > nav a:hover,
   .navbar > nav a:focus-visible {
     color: var(--lime);

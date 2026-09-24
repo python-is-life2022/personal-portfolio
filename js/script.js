@@ -149,6 +149,33 @@ document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el))
 /* ==========================================================
    4. PROJECTS FILTER
 ========================================================== */
+const categoryToggle = document.querySelector(".category-toggle");
+const projectFilters = document.getElementById("projectFilters");
+const categoryFilter = document.querySelector(".category-filter");
+const categoryNext = document.querySelector(".category-next");
+
+if (categoryToggle && projectFilters) {
+  categoryToggle.addEventListener("click", () => {
+    const isOpen = categoryToggle.getAttribute("aria-expanded") === "true";
+    categoryToggle.setAttribute("aria-expanded", String(!isOpen));
+    categoryFilter?.classList.toggle("open", !isOpen);
+    projectFilters.hidden = isOpen;
+    if (categoryNext) categoryNext.hidden = isOpen;
+  });
+}
+
+categoryNext?.addEventListener("click", () => {
+  if (!projectFilters) return;
+
+  const maxScroll = projectFilters.scrollWidth - projectFilters.clientWidth;
+  const nextPosition = projectFilters.scrollLeft + projectFilters.clientWidth;
+  const targetPosition = nextPosition >= maxScroll - 2 ? 0 : nextPosition;
+
+  projectFilters.scrollTo({ left: targetPosition, behavior: "smooth" });
+  categoryNext.classList.remove("spin");
+  requestAnimationFrame(() => categoryNext.classList.add("spin"));
+});
+
 document.querySelectorAll(".filter").forEach((btn) => {
   btn.addEventListener("click", () => {
     document.querySelectorAll(".filter").forEach((b) => b.classList.remove("active"));
@@ -157,7 +184,8 @@ document.querySelectorAll(".filter").forEach((btn) => {
     document.querySelectorAll(".project-card").forEach((card) => {
       card.classList.toggle(
         "hidden",
-        filter !== "all" && !card.dataset.tags.split(" ").includes(filter)
+        filter !== "all" &&
+          !card.dataset.tags.split(" ").map((tag) => tag.toLowerCase()).includes(filter)
       );
     });
   });

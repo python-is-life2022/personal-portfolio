@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Start a project with Amir Mostafa Kharazi." />
+  <title>Let's Connect | Amir Mostafa Kharazi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="contact-page">
+  <div class="page-glow"></div>
+  <canvas id="neuralCanvas" aria-hidden="true"></canvas>
+
+  <header class="navbar">
+    <a class="brand" href="index.html" aria-label="Amir Mostafa home">
+      <span class="brand-mark">✦</span>
+      <span><strong>AMIR MOSTAFA</strong><small>ML &amp; DL DEVELOPER</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="navMenu">
+      <a href="index.html#home">HOME</a>
+      <a href="index.html#about">ABOUT</a>
+      <a href="index.html#skills">SKILLS</a>
+      <a href="index.html#projects">PROJECTS</a>
+      <a class="active" href="contact.html">CONTACT</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="talk-btn" href="contact.html">LET'S TALK <span>➤</span></a>
+    </div>
+  </header>
+
+  <main class="contact-page-main">
+    <section class="contact-intro">
+      <span class="eyebrow">LET'S CONNECT</span>
+      <h1>Tell me about your <em>next project.</em></h1>
+      <p>Share a few details and I will get back to you as soon as possible.</p>
+    </section>
+
+    <section class="contact-form-card">
+      <div class="contact-form-heading">
+        <span class="mini-label">PROJECT BRIEF</span>
+        <h2>Let’s build something intelligent.</h2>
+      </div>
+      <form id="projectContactForm">
+        <div class="form-grid">
+          <label>
+            <span>YOUR NAME</span>
+            <input type="text" name="name" autocomplete="name" placeholder="Your full name" required />
+          </label>
+          <label>
+            <span>EMAIL ADDRESS</span>
+            <input type="email" name="email" autocomplete="email" placeholder="you@example.com" required />
+          </label>
+        </div>
+        <label>
+          <span>PROJECT TYPE</span>
+          <select name="projectType" required>
+            <option value="" disabled selected>Select a project type</option>
+            <option>Python Development</option>
+            <option>Machine Learning</option>
+            <option>Deep Learning / AI</option>
+            <option>Computer Vision</option>
+            <option>Web Design</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>
+          <span>PROJECT DETAILS</span>
+          <textarea name="details" rows="7" placeholder="Tell me about your goals, timeline, and requirements..." required></textarea>
+        </label>
+        <button class="primary-btn form-submit" type="submit">SEND PROJECT BRIEF <span>→</span></button>
+        <p class="form-note">Your email app will open with the project details ready to send.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer><span>© 2026 AMIR MOSTAFA KHARAZI</span><span>PYTHON • MACHINE LEARNING • DEEP LEARNING</span></footer>
+  <script src="js/script.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

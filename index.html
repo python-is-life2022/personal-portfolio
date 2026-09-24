@@ -75,7 +75,6 @@
       <a href="#about">ABOUT</a>
       <a href="#skills">SKILLS</a>
       <a href="#projects">PROJECTS</a>
-      <a href="design-projects.html">DESIGN</a>
       <a href="#experience">EXPERIENCE</a>
       <a href="#contact">CONTACT</a>
     </nav>
@@ -97,7 +96,7 @@
         <img src="assets/icons/linkedin.png" alt="LinkedIn">
       </a>
 
-      <a class="talk-btn" href="#contact">
+      <a class="talk-btn" href="contact.html">
         LET'S TALK <span>➤</span>
       </a>
     </div>
@@ -323,14 +322,23 @@
 
     <section class="section projects" id="projects">
       <div class="section-heading reveal"><span>PROJECTS</span><i></i></div>
-      <div class="filters reveal">
-        <button class="filter active" data-filter="all">ALL</button>
-        <button class="filter" data-filter="machine-learning">MACHINE LEARNING</button>
-        <button class="filter" data-filter="deep-learning">DEEP LEARNING</button>
-        <button class="filter" data-filter="computer-vision">COMPUTER VISION</button>
-        <button class="filter" data-filter="audio">AUDIO PROCESSING</button>
-        <button class="filter" data-filter="supervised">SUPERVISED</button>
-        <button class="filter" data-filter="unsupervised">UNSUPERVISED</button>
+      <div class="category-filter reveal">
+        <button class="category-toggle" type="button" aria-expanded="false" aria-controls="projectFilters">
+          CATEGORIES
+        </button>
+        <div class="category-scroll-area">
+          <div class="filters" id="projectFilters" hidden>
+            <button class="filter active" data-filter="all">ALL</button>
+            <button class="filter" data-filter="machine-learning">MACHINE LEARNING</button>
+            <button class="filter" data-filter="deep-learning">DEEP LEARNING</button>
+            <button class="filter" data-filter="computer-vision">COMPUTER VISION</button>
+            <button class="filter" data-filter="audio">AUDIO PROCESSING</button>
+            <button class="filter" data-filter="supervised">SUPERVISED</button>
+            <button class="filter" data-filter="unsupervised">UNSUPERVISED</button>
+            <button class="filter" data-filter="web-design">WEB DESIGN</button>
+          </div>
+          <button class="category-next" type="button" aria-label="Scroll categories right" hidden>→</button>
+        </div>
       </div>
 
       <div class="projects-grid">
@@ -385,7 +393,7 @@
              <a href="https://github.com/python-is-life2022/Fuel-Consumption-Regression-Models" target="_blank">VIEW ON GITHUB ↗</a></div>
         </article>
 
-        <article class="project-card reveal" data-tags="Web Design">
+        <article class="project-card reveal" data-tags="web-design">
           <div class="project-art sorena-competition"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
           <div class="project-body">
              <h3>Sorena Event Competition</h3>
@@ -412,7 +420,7 @@
       <div class="section-heading reveal"><span>LET'S CONNECT</span><i></i></div>
       <div class="contact-card reveal">
         <div><span class="mini-label">HAVE A PROJECT?</span><h2>Let's build something <em>intelligent.</em></h2><p>Open to interesting ML, Python and AI opportunities.</p></div>
-        <a class="primary-btn" href="mailto:amirmostafakh@gmail.com">GET IN TOUCH <span>→</span></a>
+        <a class="primary-btn" href="contact.html">GET IN TOUCH <span>→</span></a>
       </div>
     </section>
   </main>

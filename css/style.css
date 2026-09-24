@@ -649,6 +649,22 @@ button {
   font-size: 11px;
 }
 
+.form-submit:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.form-status {
+  min-height: 18px;
+  margin: 10px 0 0;
+  color: var(--lime);
+  font-size: 12px;
+}
+
+.form-status.error {
+  color: #ff7890;
+}
+
 @media (max-width: 760px) {
   .contact-page-main {
     width: min(100% - 28px, 600px);

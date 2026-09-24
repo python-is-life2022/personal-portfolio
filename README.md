@@ -85,3 +85,18 @@ The portfolio includes the following sections:
 * 🛠️ Skills
 * 📂 Projects
 * 📬 Contact
+
+## 📬 Contact form backend
+
+The contact form uses a Supabase Edge Function. Before publishing, configure
+`SUPABASE_FUNCTION_URL` and `SUPABASE_ANON_KEY` in `js/contact.js`.
+
+Deploy the function in `supabase/functions/submit-project` and apply the SQL
+migration in `supabase/migrations`. Set these Supabase secrets:
+
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `RESEND_API_KEY`
+- `EMAIL_FROM` (a verified Resend sender, for example `Portfolio <onboarding@your-domain.com>`)
+
+The function stores submissions in `project_messages` and sends them to
+`amirmostafakh@gmail.com`. Do not commit service-role or email-provider keys.

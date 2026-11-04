@@ -52,7 +52,7 @@
         <div class="form-grid">
           <label>
             <span>YOUR NAME</span>
-            <input type="text" name="name" autocomplete="name" maxlength="120" placeholder="Your full name" required />
+            <input type="text" name="name" autocomplete="name" minlength="2" maxlength="120" placeholder="Your full name" required />
           </label>
           <label>
             <span>EMAIL ADDRESS</span>
@@ -73,9 +73,9 @@
         </label>
         <label>
           <span>PROJECT DETAILS</span>
-          <textarea name="details" rows="7" maxlength="10000" placeholder="Tell me about your goals, timeline, and requirements..." required></textarea>
+          <textarea name="details" rows="7" minlength="10" maxlength="10000" placeholder="Tell me about your goals, timeline, and requirements..." required></textarea>
         </label>
-        <div class="form-honeypot" aria-hidden="true">
+        <div class="form-honeypot" aria-hidden="true" hidden>
           <label>
             <span>LEAVE THIS FIELD EMPTY</span>
             <input type="text" name="website" tabindex="-1" autocomplete="off" />

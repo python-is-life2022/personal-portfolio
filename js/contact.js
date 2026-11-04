@@ -27,6 +27,8 @@ if (projectContactForm) {
   projectContactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    if (!projectContactForm.reportValidity()) return;
+
     if (turnstileWidgetId === undefined || !window.turnstile) {
       showStatus("Security verification is unavailable. Please reload and try again.", true);
       return;
@@ -58,11 +60,29 @@ if (projectContactForm) {
         body: JSON.stringify({ name, email, projectType, details, website, turnstileToken }),
       });
 
-      if (response.status === 429) {
-        showStatus("Too many submissions. Please wait before trying again.", true);
+      if (!response.ok) {
+        const responseBody = await response.json().catch(() => null);
+        const serverError =
+          responseBody && typeof responseBody.error === "string" ? responseBody.error : "";
+
+        if (response.status === 400 && serverError === "Invalid project details") {
+          showStatus("Please enter your details and a project description of at least 10 characters.", true);
+        } else if (response.status === 400 && serverError === "Security verification failed") {
+          showStatus("Security check failed or expired. Please complete it again.", true);
+        } else if (response.status === 401) {
+          showStatus("The form service is not configured correctly. Please contact me by email.", true);
+        } else if (response.status === 403) {
+          showStatus("This website address is not authorized to send the form. Please contact me by email.", true);
+        } else if (response.status === 429) {
+          showStatus("Too many submissions. Please wait before trying again.", true);
+        } else if (response.status === 503) {
+          showStatus("The form service is not configured yet. Please contact me by email.", true);
+        } else {
+          console.error(`Project brief submission failed with status ${response.status}.`);
+          showStatus("The form service could not process your message. Please try again later.", true);
+        }
         return;
       }
-      if (!response.ok) throw new Error(`Submission failed with status ${response.status}`);
 
       projectContactForm.reset();
       showStatus("Your message was sent successfully. Thank you!");

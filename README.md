@@ -95,9 +95,10 @@ be public; never put a Supabase secret/service-role key in the website files.
 
 Before enabling the form:
 
-1. Create a Cloudflare Turnstile widget for `amirmostafakharazi.com` (Cloudflare
-   DNS/proxy is not required) and replace `REPLACE_WITH_TURNSTILE_SITE_KEY` in
-   the `turnstile-site-key` meta tag in `contact.html`.
+1. Create a Cloudflare Turnstile widget for `amirmostafakharazi.com` and
+   `www.amirmostafakharazi.com` (Cloudflare DNS/proxy is not required) and
+   replace `REPLACE_WITH_TURNSTILE_SITE_KEY` in the `turnstile-site-key` meta
+   tag in `contact.html`.
 2. Set the following secrets in the Supabase Edge Function secrets dashboard.
    Generate `RATE_LIMIT_HASH_SECRET` as a random secret of at least 32 bytes.
    Do not commit any of these values:

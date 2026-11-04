@@ -1,7 +1,10 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-const SITE_ORIGIN = "https://amirmostafakharazi.com";
-const SITE_HOSTNAME = "amirmostafakharazi.com";
+const SITE_ORIGINS = new Set([
+  "https://amirmostafakharazi.com",
+  "https://www.amirmostafakharazi.com",
+]);
+const SITE_HOSTNAMES = new Set(["amirmostafakharazi.com", "www.amirmostafakharazi.com"]);
 const MAX_REQUEST_BYTES = 48 * 1024;
 const ALLOWED_PROJECT_TYPES = new Set([
   "Python Development",
@@ -16,8 +19,8 @@ class PayloadTooLargeError extends Error {}
 
 function corsHeaders(origin: string | null): Record<string, string> {
   const headers: Record<string, string> = { Vary: "Origin" };
-  if (origin === SITE_ORIGIN) {
-    headers["Access-Control-Allow-Origin"] = SITE_ORIGIN;
+  if (origin && SITE_ORIGINS.has(origin)) {
+    headers["Access-Control-Allow-Origin"] = origin;
     headers["Access-Control-Allow-Methods"] = "POST, OPTIONS";
     headers["Access-Control-Allow-Headers"] = "apikey, content-type";
     headers["Access-Control-Max-Age"] = "86400";
@@ -93,13 +96,14 @@ async function verifyTurnstile(token: string, secret: string): Promise<boolean> 
   if (!result || typeof result !== "object") return false;
   const verification = result as { success?: unknown; hostname?: unknown; action?: unknown };
   return verification.success === true &&
-    verification.hostname === SITE_HOSTNAME &&
+    typeof verification.hostname === "string" &&
+    SITE_HOSTNAMES.has(verification.hostname) &&
     verification.action === "project_inquiry";
 }
 
 Deno.serve(async (request) => {
   const origin = request.headers.get("origin");
-  if (origin !== SITE_ORIGIN) return json({ error: "Forbidden" }, 403, origin);
+  if (!origin || !SITE_ORIGINS.has(origin)) return json({ error: "Forbidden" }, 403, origin);
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: corsHeaders(origin) });
   }

@@ -141,20 +141,6 @@ button {
   transform: scaleX(1);
 }
 
-.talk-btn.active {
-  position: relative;
-}
-
-.talk-btn.active::after {
-  content: "";
-  position: absolute;
-  right: 18px;
-  bottom: 5px;
-  left: 18px;
-  height: 2px;
-  background: #071008;
-}
-
 .nav-actions {
   grid-column: 3;
   justify-self: end;
@@ -1780,36 +1766,7 @@ footer {
 }
 
 
-.project-art.cifar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(5, 6, 13, 0.4); 
-    transition: background 0.3s ease;
-}
-
-.project-card:hover .project-art.cifar::after {
-    background: rgba(5, 6, 13, 0.1); 
-}
 /*co2*/
-.project-art.co2::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(5, 6, 13, 0.4); 
-    transition: background 0.3s ease;
-}
-
-.project-card:hover .project-art.co2::after {
-    background: rgba(5, 6, 13, 0.1); 
-}
-
 .project-art.co2{
     background-image: url('../assets/images/co2.png');
     background-size: cover;
@@ -1821,21 +1778,6 @@ footer {
     background: url("../assets/images/co2.png") center center / cover no-repeat !important;
 }
 /*Website*/
-.project-art.sorena-competition::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(5, 6, 13, 0.4); 
-    transition: background 0.3s ease;
-}
-
-.project-card:hover .project-art.sorena-competition::after {
-    background: rgba(5, 6, 13, 0.1); 
-}
-
 .project-art.sorena-competition {
     background-image: url('../assets/images/sorena-competition.png');
     background-size: cover;
@@ -1854,21 +1796,6 @@ footer {
     position: relative;
 }
 
-.project-art.digits::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(5, 6, 13, 0.4); 
-    transition: background 0.3s ease;
-}
-
-.project-card:hover .project-art.digits::after {
-    background: rgba(5, 6, 13, 0.15);
-}
-
 /* Dogs vs Cats Card Artwork */
 .project-art.dogscats {
   background-image: url('../assets/images/cats-vs-dogs.png');
@@ -1877,21 +1804,15 @@ footer {
   background-repeat: no-repeat;
 }
 
-.project-art.dogscats::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(5, 6, 13, 0.4); 
-    transition: background 0.3s ease;
+.project-art::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(5, 6, 13, 0.4);
+  content: "";
+  pointer-events: none;
+  transition: background-color 0.3s ease;
 }
-
-.project-card:hover .project-art.dogscats::after {
-    background: rgba(5, 6, 13, 0.15);
-}
-
 
 .project-card {
   display: block;
@@ -1965,6 +1886,11 @@ footer {
   box-shadow:
     0 12px 30px rgba(0, 245, 212, 0.12),
     0 0 24px rgba(180, 255, 57, 0.08);
+}
+
+.project-card:hover .project-art::after,
+.project-card:focus-within .project-art::after {
+  background-color: rgba(5, 6, 13, 0.1);
 }
 
 .project-card:hover::before {
@@ -2339,12 +2265,14 @@ footer {
 /* ===== SEO PROJECTS PAGE ===== */
 .projects-more { text-align: center; margin-top: 30px; }
 .projects-page { min-height: calc(100vh - 160px); padding: 70px 0 90px; }
+.projects-page > .journey-social { margin-top: 48px; }
 .projects-hero { max-width: 780px; margin: 0 auto 48px; text-align: center; }
 .projects-hero h1 { margin: 18px 0; font-size: clamp(34px, 6vw, 64px); line-height: 1.08; }
 .projects-hero h1 em { color: var(--lime); font-style: normal; }
 .projects-hero p { color: var(--muted); font-size: 14px; line-height: 1.9; }
 @media (max-width: 760px) {
   .projects-page { padding-top: 35px; }
+  .projects-page > .journey-social { margin-top: 32px; }
   .projects-hero { text-align: left; }
 }
 

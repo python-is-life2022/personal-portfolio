@@ -174,6 +174,91 @@ const revealObserver = new IntersectionObserver(
 );
 document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
 
+/* ==========================================================
+   3.1 EXPERIENCE JOURNEY VEHICLE
+========================================================== */
+const journeyTrack = document.querySelector(".journey-track");
+if (journeyTrack) {
+  const journeyStops = [...journeyTrack.querySelectorAll(".journey-stop")];
+  const journeyCar = journeyTrack.querySelector(".journey-car");
+  const journeyMobileQuery = window.matchMedia("(max-width: 760px)");
+  let journeyUpdateScheduled = false;
+
+  function updateJourneyProgress() {
+    journeyUpdateScheduled = false;
+    if (!journeyCar || !journeyStops.length) return;
+
+    const mobileRoad = journeyMobileQuery.matches;
+    const road = journeyTrack.querySelector(
+      mobileRoad ? ".journey-road-mobile" : ".journey-road-desktop"
+    );
+    const path = road?.querySelector(".journey-road-center");
+    const matrix = path?.getScreenCTM();
+    if (!road || !path || !matrix) return;
+
+    const trackRect = journeyTrack.getBoundingClientRect();
+    const targetY = window.scrollY + window.innerHeight * 0.48;
+    const stopPositions = journeyStops.map((stop) => {
+      const rect = stop.getBoundingClientRect();
+      return rect.top + window.scrollY + rect.height / 2;
+    });
+
+    let progress = 0;
+    for (let index = 0; index < stopPositions.length - 1; index += 1) {
+      const start = stopPositions[index];
+      const end = stopPositions[index + 1];
+      if (targetY >= end) {
+        progress = index + 1;
+      } else if (targetY > start) {
+        progress = index + (targetY - start) / (end - start);
+        break;
+      } else {
+        break;
+      }
+    }
+
+    progress = Math.min(progress, journeyStops.length - 1);
+    const activeIndex = Math.round(progress);
+    journeyStops.forEach((stop, index) => {
+      const isActive = index === activeIndex;
+      stop.classList.toggle("is-active", isActive);
+      stop.querySelector(".journey-card")?.classList.toggle("is-active", isActive);
+      const marker = stop.querySelector(".journey-marker");
+      if (isActive) marker?.setAttribute("aria-current", "step");
+      else marker?.removeAttribute("aria-current");
+    });
+
+    const totalLength = path.getTotalLength();
+    const pointAt = (distance) => {
+      const point = road.createSVGPoint();
+      const pathPoint = path.getPointAtLength(distance);
+      point.x = pathPoint.x;
+      point.y = pathPoint.y;
+      return point.matrixTransform(matrix);
+    };
+    const distance = (progress / (journeyStops.length - 1)) * totalLength;
+    const point = pointAt(distance);
+    const before = pointAt(Math.max(0, distance - 1));
+    const after = pointAt(Math.min(totalLength, distance + 1));
+    const angle = (Math.atan2(after.y - before.y, after.x - before.x) * 180) / Math.PI;
+
+    journeyCar.style.left = `${point.x - trackRect.left}px`;
+    journeyCar.style.top = `${point.y - trackRect.top}px`;
+    journeyCar.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+  }
+
+  function scheduleJourneyUpdate() {
+    if (journeyUpdateScheduled) return;
+    journeyUpdateScheduled = true;
+    requestAnimationFrame(updateJourneyProgress);
+  }
+
+  updateJourneyProgress();
+  window.addEventListener("scroll", scheduleJourneyUpdate, { passive: true });
+  window.addEventListener("resize", scheduleJourneyUpdate);
+  journeyMobileQuery.addEventListener("change", scheduleJourneyUpdate);
+}
+
 
 /* ==========================================================
    4. PROJECTS FILTER

@@ -76,7 +76,7 @@
       <a class="active" href="#home">HOME</a>
       <a href="#about">ABOUT</a>
       <a href="#skills">SKILLS</a>
-      <a href="#projects">PROJECTS</a>
+      <a href="projects.html" data-section-target="#projects">PROJECTS</a>
       <a href="experience.html">EXPERIENCE</a>
     </nav>
 
@@ -323,42 +323,9 @@
 
     <section class="section projects" id="projects">
       <div class="section-heading reveal"><span>PROJECTS</span><i></i></div>
-      <div class="category-filter reveal">
-        <button class="category-toggle" type="button" aria-expanded="false" aria-controls="projectFilters">
-          CATEGORIES
-        </button>
-        <div class="category-scroll-area">
-          <div class="filters" id="projectFilters" hidden>
-            <button class="filter active" data-filter="all">ALL</button>
-            <button class="filter" data-filter="machine-learning">MACHINE LEARNING</button>
-            <button class="filter" data-filter="deep-learning">DEEP LEARNING</button>
-            <button class="filter" data-filter="computer-vision">COMPUTER VISION</button>
-            <button class="filter" data-filter="audio">AUDIO PROCESSING</button>
-            <button class="filter" data-filter="supervised">SUPERVISED</button>
-            <button class="filter" data-filter="unsupervised">UNSUPERVISED</button>
-            <button class="filter" data-filter="web-design">WEB DESIGN</button>
-          </div>
-          <button class="category-next" type="button" aria-label="Scroll categories right" hidden>→</button>
-        </div>
-      </div>
-
       <div class="projects-grid">
-        <article class="project-card reveal" data-tags="machine-learning unsupervised">
-          <div class="project-art clustering"><span></span><span></span><span></span></div>
-          <div class="project-body"><h3>Customer Segmentation</h3><p>Clustering customers using K-Means and PCA.</p><div class="tags"><b>Unsupervised</b><b>Scikit-learn</b></div><a href="https://github.com/" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB ↗</a></div>
-        </article>
-
         <article class="project-card reveal" data-tags="deep-learning supervised computer-vision">
-          <div class="project-art digits"></div>
-          <div class="project-body">
-            <h3>Persian Digits Classification</h3>
-            <p>Handwritten digit classification using a Fully Connected Neural Network (FCNN).</p>
-            <div class="tags"><b>Deep Learning</b><b>Supervised</b></div>
-            <a href="https://github.com/python-is-life2022/Persian-Digits-Hand-Writing-Image-Classification-Fully-Connected-Neural-Network" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB ↗</a>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="deep-learning supervised computer-vision">
+          <a class="project-card-link" href="https://github.com/python-is-life2022/Cats-vs-Dogs-Image-Classification-CNN" target="_blank" rel="noopener noreferrer" aria-label="View Cats vs Dogs Classification on GitHub"></a>
           <div class="project-art dogscats"></div>
           <div class="project-body">
             <h3>Cats vs Dogs Classification</h3>
@@ -372,29 +339,8 @@
           </div>
         </article>
 
-        <article class="project-card reveal" data-tags="deep-learning audio supervised">
-          <div class="project-art waveform"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          <div class="project-body"><h3>Speech Emotion Recognition</h3><p>Recognizing emotions from speech signals.</p><div class="tags"><b>Deep Learning</b><b>Audio</b></div><a href="https://github.com/" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB ↗</a></div>
-        </article>
-        <article class="project-card reveal" data-tags="deep-learning computer-vision supervised">
-        <div class="project-art cifar"></div>
-        <div class="project-body">
-          <h3>CIFAR-100 Classification</h3>
-          <p>Image classification using CNN and advanced Data Augmentation techniques.</p>
-          <div class="tags"><b>Deep Learning</b><b>Computer Vision</b></div>
-          <a href="https://github.com/python-is-life2022/Cifar100-images-classification-CNN" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB ↗</a>
-        </div>
-       </article>
-      <article class="project-card reveal" data-tags="machine-learning supervised">
-          <div class="project-art co2"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          <div class="project-body">
-             <h3>Fuel Consumption Prediction</h3>
-             <p>Regression Using Four Different Models</p>
-             <div class="tags"><b>Machine Learning</b><b>Supervised</b><b>Regression</b></div>
-             <a href="https://github.com/python-is-life2022/Fuel-Consumption-Regression-Models" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB ↗</a></div>
-        </article>
-
         <article class="project-card reveal" data-tags="deep-learning supervised computer-vision">
+          <a class="project-card-link" href="https://github.com/python-is-life2022/image-classification-resnet-finetuning" target="_blank" rel="noopener noreferrer" aria-label="View Image Classification with ResNet Fine-Tuning on GitHub"></a>
           <div class="project-art resnet"></div>
           <div class="project-body">
             <h3>Image Classification with ResNet Fine-Tuning</h3>
@@ -404,17 +350,8 @@
           </div>
         </article>
 
-        <article class="project-card reveal" data-tags="machine-learning supervised">
-          <div class="project-art power-consumption"></div>
-          <div class="project-body">
-            <h3>Individual Household Electric Power Consumption</h3>
-            <p>Exploring and analyzing household electricity consumption data over time.</p>
-            <div class="tags"><b>Machine Learning</b><b>Time Series</b><b>Data Analysis</b></div>
-            <a href="https://github.com/python-is-life2022/individual-household-electric-power-consumption" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB ↗</a>
-          </div>
-        </article>
-
         <article class="project-card reveal" data-tags="web-design">
+          <a class="project-card-link" href="https://sorena-competition.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Sorena Event Competition website"></a>
           <div class="project-art sorena-competition"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
           <div class="project-body">
              <h3>Sorena Event Competition</h3>
@@ -424,7 +361,7 @@
         </article>
       </div>
       <div class="projects-more reveal">
-        <a class="secondary-btn" href="projects.html">EXPLORE ALL PROJECT DETAILS <span>→</span></a>
+        <a class="secondary-btn" href="projects.html">EXPLORE ALL PROJECTS <span>→</span></a>
       </div>
     </section>
 

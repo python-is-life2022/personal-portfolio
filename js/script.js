@@ -126,7 +126,9 @@ if (menuToggle && navMenu) {
    3. SCROLL OBSERVERS (ACTIVE LINK & REVEAL ANIMATIONS)
 ========================================================== */
 const sections = [...document.querySelectorAll("main section[id]")];
-const navLinks = [...document.querySelectorAll('#navMenu a[href^="#"]')];
+const navLinks = [
+  ...document.querySelectorAll('#navMenu a[href^="#"], #navMenu a[data-section-target]'),
+];
 
 function updateActiveNavLink() {
   if (!sections.length || !navLinks.length) return;
@@ -139,7 +141,8 @@ function updateActiveNavLink() {
   }
 
   navLinks.forEach((link) => {
-    const isActive = link.getAttribute("href") === `#${activeSection.id}`;
+    const target = link.dataset.sectionTarget || link.getAttribute("href");
+    const isActive = target === `#${activeSection.id}`;
     link.classList.toggle("active", isActive);
     if (isActive) link.setAttribute("aria-current", "location");
     else link.removeAttribute("aria-current");

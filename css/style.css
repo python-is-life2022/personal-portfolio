@@ -54,6 +54,10 @@ button {
   margin: auto;
 }
 
+.text-justify {
+  text-align: justify;
+}
+
 
 .navbar {
   width: min(1120px, calc(100% - 48px));
@@ -130,8 +134,23 @@ button {
   color: #fff;
 }
 
-.navbar > nav a:hover::after {
+.navbar > nav a:hover::after,
+.navbar > nav a.active::after {
   transform: scaleX(1);
+}
+
+.talk-btn.active {
+  position: relative;
+}
+
+.talk-btn.active::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  bottom: 5px;
+  left: 18px;
+  height: 2px;
+  background: #071008;
 }
 
 .nav-actions {
@@ -641,6 +660,20 @@ button {
 .form-submit {
   border: 0;
   margin-top: 8px;
+}
+
+.form-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+#turnstileWidget {
+  min-height: 65px;
+  margin: 18px 0 8px;
 }
 
 .form-note {
@@ -1216,9 +1249,25 @@ button {
 }
 
 .project-body > a {
+  position: static;
   color: var(--lime);
   font-size: 8px;
   font-weight: 800;
+}
+
+.project-body > a::after,
+.project-detail-card .primary-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.project-body > a:focus-visible::after,
+.project-detail-card .primary-btn:focus-visible::after {
+  outline: 2px solid var(--lime);
+  outline-offset: -4px;
+  border-radius: inherit;
 }
 
 .project-card.hidden {
@@ -1672,6 +1721,20 @@ footer {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.project-art.resnet {
+  background-image:
+    radial-gradient(circle at 30% 45%, rgba(217, 255, 50, 0.3), transparent 25%),
+    linear-gradient(135deg, #10243a, #10131d 55%, #172b35);
+}
+
+.project-art.power-consumption {
+  background-image:
+    linear-gradient(155deg, transparent 47%, rgba(24, 217, 232, 0.8) 48%, transparent 49%),
+    linear-gradient(20deg, transparent 58%, rgba(217, 255, 50, 0.7) 59%, transparent 60%),
+    linear-gradient(135deg, #0b1821, #10272d);
+}
+
 .project-art.cifar {
     background-image: url('../assets/images/cifar100.png');
     background-size: cover;
@@ -2172,7 +2235,8 @@ footer {
 
 
   .navbar > nav a:hover,
-  .navbar > nav a:focus-visible {
+  .navbar > nav a:focus-visible,
+  .navbar > nav a.active {
     color: var(--lime);
     background: rgba(217, 255, 50, 0.08);
     border-color: rgba(217, 255, 50, 0.28);
@@ -2221,7 +2285,7 @@ footer {
 .projects-hero h1 em { color: var(--lime); font-style: normal; }
 .projects-hero p { color: var(--muted); font-size: 14px; line-height: 1.9; }
 .project-detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
-.project-detail-card { padding: 30px; border: 1px solid rgba(217,255,50,.18); border-radius: 18px; background: linear-gradient(145deg, rgba(18,29,40,.96), rgba(8,16,24,.96)); transition: transform .3s ease, border-color .3s ease; }
+.project-detail-card { position: relative; padding: 30px; border: 1px solid rgba(217,255,50,.18); border-radius: 18px; background: linear-gradient(145deg, rgba(18,29,40,.96), rgba(8,16,24,.96)); transition: transform .3s ease, border-color .3s ease; }
 .project-detail-card:hover { transform: translateY(-6px); border-color: rgba(217,255,50,.5); }
 .project-detail-card h2 { margin: 12px 0; font-size: 23px; }
 .project-detail-card p { min-height: 78px; color: var(--muted); font-size: 13px; line-height: 1.8; }

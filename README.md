@@ -88,15 +88,35 @@ The portfolio includes the following sections:
 
 ## 📬 Contact form backend
 
-The contact form uses a Supabase Edge Function. Before publishing, configure
-`SUPABASE_FUNCTION_URL` and `SUPABASE_ANON_KEY` in `js/contact.js`.
+The contact form uses the `submit-project` Supabase Edge Function at
+`https://<project-ref>.supabase.co/functions/v1/submit-project`. Set the project
+URL and publishable key in `js/contact.js`. The publishable key is intended to
+be public; never put a Supabase secret/service-role key in the website files.
 
-Deploy the function in `supabase/functions/submit-project` and apply the SQL
-migration in `supabase/migrations`. Set these Supabase secrets:
+Before enabling the form:
+
+1. Create a Cloudflare Turnstile widget for `amirmostafakharazi.com` (Cloudflare
+   DNS/proxy is not required) and replace `REPLACE_WITH_TURNSTILE_SITE_KEY` in
+   the `turnstile-site-key` meta tag in `contact.html`.
+2. Set the following secrets in the Supabase Edge Function secrets dashboard.
+   Generate `RATE_LIMIT_HASH_SECRET` as a random secret of at least 32 bytes.
+   Do not commit any of these values:
 
 - `SUPABASE_SERVICE_ROLE_KEY`
 - `RESEND_API_KEY`
 - `EMAIL_FROM` (a verified Resend sender, for example `Portfolio <onboarding@your-domain.com>`)
+- `TURNSTILE_SECRET_KEY`
+- `RATE_LIMIT_HASH_SECRET`
+
+3. Apply the migrations in `supabase/migrations` and deploy
+   `supabase/functions/submit-project` with `supabase/config.toml`. The function
+   verifies Turnstile tokens, accepts requests only from the production origin,
+   limits request size, and rate-limits each IP to 5 submissions per 15 minutes
+   and each email address to 3 per 24 hours.
 
 The function stores submissions in `project_messages` and sends them to
-`amirmostafakh@gmail.com`. Do not commit service-role or email-provider keys.
+`amirmostafakh@gmail.com`. GitHub Pages does not support custom HTTP security
+headers; the site includes a restrictive Content Security Policy and referrer
+policy as HTML metadata, but response-only headers such as HSTS and
+`X-Content-Type-Options` must be configured at a hosting provider that supports
+them.

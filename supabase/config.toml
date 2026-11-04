@@ -1,0 +1,2 @@
+[functions.submit-project]
+verify_jwt = true

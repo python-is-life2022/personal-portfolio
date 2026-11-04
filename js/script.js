@@ -115,14 +115,11 @@ if (menuToggle && navMenu) {
 /* ==========================================================
    3. SCROLL OBSERVERS (ACTIVE LINK & REVEAL ANIMATIONS)
 ========================================================== */
-const sections = [...document.querySelectorAll("main section")];
-const navLinks = [...document.querySelectorAll("nav a")];
+const sections = [...document.querySelectorAll("main section[id]")];
+const navLinks = [...document.querySelectorAll('#navMenu a[href^="#"]')];
 
 const observer = new IntersectionObserver(
   (entries) => {
-    // اگر در موبایل باشد، کلاس اکتیو اضافه نکند
-    if (window.innerWidth <= 760) return;
-
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         navLinks.forEach((l) =>

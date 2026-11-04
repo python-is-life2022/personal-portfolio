@@ -266,15 +266,40 @@ if (journeyTrack) {
 const categoryToggle = document.querySelector(".category-toggle");
 const projectFilters = document.getElementById("projectFilters");
 const categoryFilter = document.querySelector(".category-filter");
+const categoryScrollArea = document.querySelector(".category-scroll-area");
 const categoryNext = document.querySelector(".category-next");
+let categoryCloseTimeout;
 
 if (categoryToggle && projectFilters) {
   categoryToggle.addEventListener("click", () => {
     const isOpen = categoryToggle.getAttribute("aria-expanded") === "true";
     categoryToggle.setAttribute("aria-expanded", String(!isOpen));
-    categoryFilter?.classList.toggle("open", !isOpen);
-    projectFilters.hidden = isOpen;
-    if (categoryNext) categoryNext.hidden = isOpen;
+
+    if (!categoryFilter) return;
+
+    if (isOpen) {
+      categoryFilter.classList.remove("open");
+      categoryFilter.classList.add("closing");
+      categoryCloseTimeout = window.setTimeout(() => {
+        categoryFilter.classList.remove("closing");
+        projectFilters.hidden = true;
+        if (categoryNext) categoryNext.hidden = true;
+        categoryScrollArea?.setAttribute("aria-hidden", "true");
+        if (categoryScrollArea) categoryScrollArea.inert = true;
+        categoryCloseTimeout = undefined;
+      }, 1150);
+      return;
+    }
+
+    window.clearTimeout(categoryCloseTimeout);
+    categoryCloseTimeout = undefined;
+    projectFilters.hidden = false;
+    if (categoryNext) categoryNext.hidden = false;
+    categoryScrollArea?.setAttribute("aria-hidden", "false");
+    if (categoryScrollArea) categoryScrollArea.inert = false;
+    categoryFilter.classList.remove("closing");
+    void categoryFilter.offsetWidth;
+    categoryFilter.classList.add("open");
   });
 }
 

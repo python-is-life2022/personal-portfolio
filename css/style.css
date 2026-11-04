@@ -816,7 +816,8 @@ button {
   transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.skills-arrow {
+.skills-arrow,
+.projects-arrow {
   width: 44px;
   height: 44px;
   display: grid;
@@ -837,14 +838,16 @@ button {
     color 0.25s ease;
 }
 
-.skills-arrow:hover {
+.skills-arrow:hover,
+.projects-arrow:hover {
   transform: scale(1.12);
   background: var(--lime);
   color: #071008;
   box-shadow: 0 0 24px rgba(217, 255, 50, 0.38);
 }
 
-.skills-arrow:active {
+.skills-arrow:active,
+.projects-arrow:active {
   transform: scale(0.95);
 }
 
@@ -1417,7 +1420,8 @@ footer {
     flex: 0 0 calc((100% - 12px) / 2);
   }
 
-  .skills-arrow {
+  .skills-arrow,
+  .projects-arrow {
     width: 38px;
     height: 38px;
     font-size: 20px;
@@ -1698,7 +1702,8 @@ footer {
     flex: 0 0 100%;
   }
 
-  .skills-arrow {
+  .skills-arrow,
+  .projects-arrow {
     width: 32px;
     height: 32px;
     font-size: 18px;
@@ -2862,14 +2867,40 @@ footer {
 }
 
 .journey-marker > span {
-  position: relative;
+  position: absolute;
+  right: -5px;
+  bottom: -3px;
   z-index: 1;
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  border: 1px solid rgba(217, 255, 50, 0.42);
+  border-radius: 50%;
+  background: #0b151e;
+  color: var(--lime);
+  font-size: 8px;
+  line-height: 1;
+}
+
+.journey-marker img {
+  display: block;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 5px rgba(24, 217, 232, 0.35));
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .journey-stop.is-active .journey-marker {
   border-color: var(--lime);
   background: #101c20;
   box-shadow: 0 0 0 8px rgba(2, 10, 19, 0.82), 0 0 30px rgba(217, 255, 50, 0.65);
+}
+
+.journey-stop.is-active .journey-marker img {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 8px rgba(217, 255, 50, 0.78));
 }
 
 .journey-stop:nth-of-type(odd) .journey-marker {
@@ -3039,13 +3070,14 @@ footer {
   padding: 28px;
 }
 
-.journey-branch-number {
+.journey-branch-icon {
   position: absolute;
   top: 22px;
   right: 24px;
-  color: rgba(217, 255, 50, 0.16);
-  font-size: 48px;
-  font-weight: 800;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(24, 217, 232, 0.28));
 }
 
 .journey-social {
@@ -3350,8 +3382,10 @@ footer {
   .journey-card,
   .journey-card::before,
   .journey-marker,
+  .journey-marker img,
   .journey-car,
-  .journey-social-link {
+  .journey-social-link,
+  .projects:not(.projects-page) .projects-grid {
     transition: none;
     animation: none !important;
   }
@@ -3361,14 +3395,52 @@ footer {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.projects:not(.projects-page) .projects-arrow {
+  display: none;
+}
+
 @media (max-width: 950px) {
+  .projects:not(.projects-page) .projects-slider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .projects:not(.projects-page) .projects-viewport {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    padding: 10px 4px;
+  }
+
   .projects:not(.projects-page) .projects-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+  }
+
+  .projects:not(.projects-page) .project-card {
+    flex: 0 0 calc((100% - 12px) / 2);
+    min-width: 0;
+  }
+
+  .projects:not(.projects-page) .projects-arrow {
+    display: grid;
   }
 }
 
 @media (max-width: 500px) {
+  .projects:not(.projects-page) .projects-slider {
+    gap: 8px;
+  }
+
   .projects:not(.projects-page) .projects-grid {
-    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .projects:not(.projects-page) .project-card {
+    flex-basis: 100%;
   }
 }

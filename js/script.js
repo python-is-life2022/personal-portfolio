@@ -368,3 +368,51 @@ if (skillsTrack && skillCards.length > 0 && prevSkillButton && nextSkillButton) 
   window.addEventListener("DOMContentLoaded", updateSkillsSlider);
   updateSkillsSlider();
 }
+
+/* ==========================================================
+   5.1 FEATURED PROJECTS CAROUSEL
+========================================================== */
+const projectsTrack = document.querySelector(".projects:not(.projects-page) .projects-grid");
+const projectCards = [...document.querySelectorAll(".projects:not(.projects-page) .project-card")];
+const prevProjectButton = document.querySelector(".projects-prev");
+const nextProjectButton = document.querySelector(".projects-next");
+
+if (projectsTrack && projectCards.length > 0 && prevProjectButton && nextProjectButton) {
+  let currentProjectIndex = 0;
+
+  function getVisibleProjectCount() {
+    if (window.innerWidth <= 500) return 1;
+    if (window.innerWidth <= 950) return 2;
+    return projectCards.length;
+  }
+
+  function updateProjectsSlider() {
+    const visibleCount = getVisibleProjectCount();
+    const maxIndex = Math.max(0, projectCards.length - visibleCount);
+    currentProjectIndex = Math.min(currentProjectIndex, maxIndex);
+
+    if (maxIndex === 0) {
+      projectsTrack.style.transform = "";
+      return;
+    }
+
+    const cardWidth = projectCards[0].getBoundingClientRect().width;
+    const gap = parseFloat(window.getComputedStyle(projectsTrack).gap) || 0;
+    projectsTrack.style.transform = `translateX(-${currentProjectIndex * (cardWidth + gap)}px)`;
+  }
+
+  nextProjectButton.addEventListener("click", () => {
+    const maxIndex = Math.max(0, projectCards.length - getVisibleProjectCount());
+    currentProjectIndex = currentProjectIndex >= maxIndex ? 0 : currentProjectIndex + 1;
+    updateProjectsSlider();
+  });
+
+  prevProjectButton.addEventListener("click", () => {
+    const maxIndex = Math.max(0, projectCards.length - getVisibleProjectCount());
+    currentProjectIndex = currentProjectIndex <= 0 ? maxIndex : currentProjectIndex - 1;
+    updateProjectsSlider();
+  });
+
+  window.addEventListener("resize", updateProjectsSlider);
+  updateProjectsSlider();
+}

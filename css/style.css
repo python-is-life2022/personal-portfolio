@@ -2212,6 +2212,15 @@ footer {
     display: none;
   }
 
+  .navbar > nav a.active::after {
+    display: block;
+    right: 18px;
+    bottom: 5px;
+    left: 18px;
+    width: auto;
+    transform: scaleX(1);
+  }
+
 
   .navbar > nav a {
     width: 100%;

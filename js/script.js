@@ -106,10 +106,20 @@ drawNetwork();
 const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
 if (menuToggle && navMenu) {
-  menuToggle.addEventListener("click", () => navMenu.classList.toggle("open"));
+  menuToggle.addEventListener("click", () => {
+    const isOpen = navMenu.classList.toggle("open");
+    menuToggle.classList.toggle("active", isOpen);
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+  });
   document
     .querySelectorAll("#navMenu a")
-    .forEach((a) => a.addEventListener("click", () => navMenu.classList.remove("open")));
+    .forEach((a) => a.addEventListener("click", () => {
+      navMenu.classList.remove("open");
+      menuToggle.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation");
+    }));
 }
 
 /* ==========================================================
@@ -118,19 +128,38 @@ if (menuToggle && navMenu) {
 const sections = [...document.querySelectorAll("main section[id]")];
 const navLinks = [...document.querySelectorAll('#navMenu a[href^="#"]')];
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        navLinks.forEach((l) =>
-          l.classList.toggle("active", l.getAttribute("href") === "#" + entry.target.id)
-        );
-      }
-    });
-  },
-  { rootMargin: "-35% 0px -55% 0px" }
-);
-sections.forEach((s) => observer.observe(s));
+function updateActiveNavLink() {
+  if (!sections.length || !navLinks.length) return;
+
+  const activationLine = window.innerHeight * 0.4;
+  let activeSection = sections[0];
+  for (const section of sections) {
+    if (section.getBoundingClientRect().top > activationLine) break;
+    activeSection = section;
+  }
+
+  navLinks.forEach((link) => {
+    const isActive = link.getAttribute("href") === `#${activeSection.id}`;
+    link.classList.toggle("active", isActive);
+    if (isActive) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  });
+}
+
+let navUpdateScheduled = false;
+function scheduleActiveNavUpdate() {
+  if (navUpdateScheduled) return;
+  navUpdateScheduled = true;
+  requestAnimationFrame(() => {
+    updateActiveNavLink();
+    navUpdateScheduled = false;
+  });
+}
+
+updateActiveNavLink();
+window.addEventListener("scroll", scheduleActiveNavUpdate, { passive: true });
+window.addEventListener("resize", scheduleActiveNavUpdate);
+window.addEventListener("hashchange", scheduleActiveNavUpdate);
 
 const revealObserver = new IntersectionObserver(
   (entries) => {

@@ -1757,9 +1757,7 @@ footer {
 }
 
 .project-art.resnet {
-  background-image:
-    radial-gradient(circle at 30% 45%, rgba(217, 255, 50, 0.3), transparent 25%),
-    linear-gradient(135deg, #10243a, #10131d 55%, #172b35);
+  background: url("../assets/images/resnet-object-detection.png") center / cover no-repeat;
 }
 
 .project-art.power-consumption {

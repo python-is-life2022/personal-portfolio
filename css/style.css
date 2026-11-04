@@ -1424,6 +1424,25 @@ footer {
   }
 }
 
+@media (min-width: 761px) and (max-width: 1050px) {
+  .hero > .hero-visual {
+    height: 640px;
+  }
+
+  .hero > .hero-visual .portrait-frame {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 24%, #000 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 24%, #000 100%);
+  }
+
+  .hero > .hero-visual .portrait-frame img {
+    object-position: center 78%;
+    transform: scale(1.55);
+    border-radius: 0 0 32px 32px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 68%, transparent 100%);
+  }
+}
+
 @media (max-width: 760px) {
   .navbar {
     width: min(100% - 28px, 700px);

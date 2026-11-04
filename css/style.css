@@ -2793,7 +2793,7 @@ footer {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 3;
+  z-index: 1;
   width: 42px;
   height: 26px;
   pointer-events: none;
@@ -2850,7 +2850,7 @@ footer {
 .journey-marker {
   position: absolute;
   top: 50%;
-  z-index: 1;
+  z-index: 2;
   display: grid;
   width: 54px;
   height: 54px;
@@ -2863,7 +2863,7 @@ footer {
   font-size: 12px;
   font-weight: 800;
   transform: translate(-50%, -50%);
-  transition: box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transition: width 0.3s ease, height 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .journey-marker > span {
@@ -2893,6 +2893,8 @@ footer {
 }
 
 .journey-stop.is-active .journey-marker {
+  width: 64px;
+  height: 64px;
   border-color: var(--lime);
   background: #101c20;
   box-shadow: 0 0 0 8px rgba(2, 10, 19, 0.82), 0 0 30px rgba(217, 255, 50, 0.65);
@@ -3223,7 +3225,7 @@ footer {
 
   .journey-stop {
     grid-template-columns: 1fr;
-    padding-left: 58px;
+    padding-left: max(88px, calc(16.5vw + 24px));
   }
 
   .journey-stop:nth-of-type(odd) .journey-marker {
@@ -3283,13 +3285,18 @@ footer {
   }
 
   .journey-stop {
-    padding-left: 50px;
+    padding-left: max(88px, calc(16.5vw + 24px));
   }
 
   .journey-marker {
     width: 42px;
     height: 42px;
     font-size: 10px;
+  }
+
+  .journey-stop.is-active .journey-marker {
+    width: 50px;
+    height: 50px;
   }
 
   .journey-stop:nth-of-type(odd) .journey-marker {
@@ -3306,7 +3313,7 @@ footer {
   }
 
   .journey-card {
-    padding: 19px;
+    padding: 16px;
   }
 
   .journey-card h3 {
@@ -3442,5 +3449,161 @@ footer {
 
   .projects:not(.projects-page) .project-card {
     flex-basis: 100%;
+  }
+}
+
+.about-card,
+.stat,
+.skill-card,
+.project-card,
+.contact-card,
+.contact-form-card,
+.design-info-card,
+.design-info-item,
+.journey-card,
+.journey-branch-card,
+.experience-contact {
+  border-color: transparent;
+  background: linear-gradient(145deg, rgba(28, 42, 54, 0.8), rgba(8, 16, 24, 0.78));
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.about-card,
+.stat,
+.skill-card,
+.contact-card,
+.contact-form-card,
+.design-info-card,
+.design-info-item,
+.journey-branch-card,
+.experience-contact {
+  position: relative;
+  isolation: isolate;
+}
+
+.about-card::before,
+.stat::before,
+.skill-card::before,
+.contact-card::before,
+.contact-form-card::before,
+.design-info-card::before,
+.design-info-item::before,
+.journey-card::before,
+.journey-branch-card::before,
+.experience-contact::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 0deg 285deg,
+    #00f5d4 310deg,
+    #b4ff39 335deg,
+    transparent 360deg
+  );
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+.about-card > *,
+.stat > *,
+.skill-card > *,
+.contact-card > *,
+.contact-form-card > *,
+.design-info-card > *,
+.design-info-item > *,
+.journey-branch-card > :not(.journey-branch-icon),
+.experience-contact > * {
+  position: relative;
+  z-index: 2;
+}
+
+.journey-branch-card > .journey-branch-icon {
+  z-index: 2;
+}
+
+.about-card:hover::before,
+.about-card:focus-within::before,
+.stat:hover::before,
+.stat:focus-within::before,
+.skill-card:hover::before,
+.skill-card:focus-within::before,
+.contact-card:hover::before,
+.contact-card:focus-within::before,
+.contact-form-card:hover::before,
+.contact-form-card:focus-within::before,
+.design-info-card:hover::before,
+.design-info-card:focus-within::before,
+.design-info-item:hover::before,
+.design-info-item:focus-within::before,
+.project-card:hover::before,
+.project-card:focus-visible::before,
+.journey-card:hover::before,
+.journey-card.is-active::before,
+.journey-branch-card:hover::before,
+.journey-branch-card:focus-within::before,
+.experience-contact:hover::before,
+.experience-contact:focus-within::before {
+  opacity: 1;
+  animation: border-spin 2.4s linear infinite;
+}
+
+.about-card:hover,
+.about-card:focus-within,
+.stat:hover,
+.stat:focus-within,
+.skill-card:hover,
+.skill-card:focus-within,
+.project-card:hover,
+.project-card:focus-visible,
+.contact-card:hover,
+.contact-card:focus-within,
+.contact-form-card:hover,
+.contact-form-card:focus-within,
+.design-info-card:hover,
+.design-info-card:focus-within,
+.design-info-item:hover,
+.design-info-item:focus-within,
+.journey-card:hover,
+.journey-card:focus-within,
+.journey-branch-card:hover,
+.journey-branch-card:focus-within,
+.experience-contact:hover,
+.experience-contact:focus-within {
+  border-color: transparent;
+}
+
+.quick-strip,
+.journey-social {
+  border-color: rgba(255, 255, 255, 0.16);
+  background-color: rgba(13, 22, 32, 0.64);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-card::before,
+  .stat::before,
+  .skill-card::before,
+  .contact-card::before,
+  .contact-form-card::before,
+  .design-info-card::before,
+  .design-info-item::before,
+  .journey-card::before,
+  .journey-branch-card::before,
+  .experience-contact::before {
+    animation: none !important;
   }
 }

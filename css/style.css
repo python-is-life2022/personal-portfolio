@@ -2654,3 +2654,235 @@ footer {
     margin: 10px 0 0;
   }
 }
+
+/* ===== EXPERIENCE PAGE ===== */
+.experience-page {
+  min-height: calc(100vh - 160px);
+  padding: 70px 0 90px;
+}
+
+.experience-hero {
+  max-width: 780px;
+  margin: 0 auto 70px;
+  text-align: center;
+}
+
+.experience-hero h1 {
+  margin: 0 0 18px;
+  font-size: clamp(36px, 6vw, 66px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+.experience-hero h1 em,
+.experience-contact h2 em {
+  color: var(--lime);
+  font-style: normal;
+}
+
+.experience-hero p {
+  max-width: 680px;
+  margin: 0 auto 26px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.experience-list {
+  position: relative;
+  max-width: 850px;
+  margin: 0 auto 90px;
+}
+
+.experience-list::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 142px;
+  width: 1px;
+  background: rgba(217, 255, 50, 0.25);
+}
+
+.experience-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 142px minmax(0, 1fr);
+  gap: 34px;
+  padding-bottom: 48px;
+}
+
+.experience-entry:last-child {
+  padding-bottom: 0;
+}
+
+.experience-entry-date {
+  position: relative;
+  padding-top: 3px;
+  color: var(--lime);
+  font-size: 9px;
+  letter-spacing: 0.7px;
+}
+
+.experience-entry-dot {
+  position: absolute;
+  top: 2px;
+  right: -40px;
+  width: 13px;
+  height: 13px;
+  border: 3px solid var(--bg);
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 15px rgba(217, 255, 50, 0.55);
+}
+
+.experience-entry-content,
+.experience-focus-card {
+  padding: 28px;
+  border: 1px solid rgba(217, 255, 50, 0.16);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(18, 29, 40, 0.96), rgba(8, 16, 24, 0.96));
+}
+
+.experience-entry-content h2,
+.experience-focus-card h2 {
+  margin: 10px 0;
+  font-size: 22px;
+}
+
+.experience-entry-content p,
+.experience-focus-card p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.85;
+}
+
+.experience-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+  list-style: none;
+}
+
+.experience-tags li {
+  padding: 7px 10px;
+  border: 1px solid rgba(217, 255, 50, 0.16);
+  border-radius: 20px;
+  color: #d3dae0;
+  font-size: 9px;
+}
+
+.experience-focus {
+  margin-bottom: 70px;
+}
+
+.experience-focus .section-heading {
+  margin-bottom: 28px;
+}
+
+.experience-focus-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.experience-focus-card {
+  min-height: 180px;
+}
+
+.experience-contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 34px;
+  border: 1px solid rgba(217, 255, 50, 0.16);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(18, 29, 40, 0.88), rgba(8, 16, 24, 0.88));
+}
+
+.experience-contact h2 {
+  margin: 10px 0;
+  font-size: 28px;
+}
+
+.experience-contact p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+@media (max-width: 760px) {
+  .experience-page {
+    padding-top: 35px;
+    padding-bottom: 60px;
+  }
+
+  .experience-hero {
+    margin-bottom: 48px;
+    text-align: left;
+  }
+
+  .experience-hero h1 {
+    letter-spacing: -1.5px;
+  }
+
+  .experience-hero p {
+    font-size: 12px;
+  }
+
+  .experience-list::before {
+    left: 5px;
+  }
+
+  .experience-entry {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-left: 30px;
+    padding-bottom: 32px;
+  }
+
+  .experience-entry-date {
+    padding-left: 2px;
+  }
+
+  .experience-entry-dot {
+    top: 0;
+    right: auto;
+    left: -31px;
+  }
+
+  .experience-entry-content {
+    padding: 22px;
+  }
+
+  .experience-focus-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-focus-card {
+    min-height: auto;
+  }
+
+  .experience-contact {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 26px;
+  }
+}
+
+@media (max-width: 500px) {
+  .experience-hero h1 {
+    font-size: clamp(34px, 10vw, 46px);
+  }
+
+  .experience-entry-content h2,
+  .experience-focus-card h2 {
+    font-size: 19px;
+  }
+
+  .experience-contact h2 {
+    font-size: 24px;
+  }
+}

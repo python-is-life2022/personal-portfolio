@@ -1,0 +1,22 @@
+.preview-notice {
+  position: fixed;
+  z-index: 1000;
+  right: 1rem;
+  bottom: 1rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgb(0 200 255 / 40%);
+  border-radius: 999px;
+  background: rgb(5 11 36 / 92%);
+  color: #dceaff;
+  font-size: 0.78rem;
+  box-shadow: 0 8px 30px rgb(0 0 0 / 35%);
+  backdrop-filter: blur(12px);
+}
+
+@media (max-width: 600px) {
+  .preview-notice {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    font-size: 0.68rem;
+  }
+}

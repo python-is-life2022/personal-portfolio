@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="400" viewBox="0 0 560 400" fill="none">
+  <defs><linearGradient id="bg" x1="45" y1="15" x2="515" y2="392" gradientUnits="userSpaceOnUse"><stop stop-color="#131d4a"/><stop offset="1" stop-color="#09112b"/></linearGradient><linearGradient id="deck" x1="91" y1="146" x2="468" y2="314" gradientUnits="userSpaceOnUse"><stop stop-color="#293b7a"/><stop offset=".5" stop-color="#101832"/><stop offset="1" stop-color="#263b7a"/></linearGradient></defs>
+  <rect width="560" height="400" rx="24" fill="url(#bg)"/><ellipse cx="286" cy="291" rx="205" ry="31" fill="#5525c9" fill-opacity=".2"/>
+  <path fill="url(#deck)" stroke="#6075cf" stroke-width="5" d="m88 136 372-25 34 180-370 31-36-186Z"/>
+  <g stroke="#7285db" stroke-width="3"><path d="m117 158 39-2 4 22-38 3-5-23Zm56-4 39-2 4 22-38 3-5-23Zm56-4 39-2 4 22-38 3-5-23Zm56-4 39-2 4 22-38 3-5-23Zm56-4 39-2 4 22-38 3-5-23Zm56-4 36-2 4 22-36 3-4-23ZM124 192l40-3 5 22-40 3-5-22Zm57-4 40-3 4 22-39 3-5-22Zm57-4 40-3 4 22-39 3-5-22Zm57-4 40-3 4 22-39 3-5-22Zm57-4 40-3 4 22-39 3-5-22Zm57-4 35-3 5 22-35 3-5-22ZM131 226l41-3 4 22-41 3-4-22Zm57-4 41-3 4 22-41 3-4-22Zm57-4 41-3 4 22-41 3-4-22Zm57-4 41-3 4 22-41 3-4-22Zm57-4 41-3 4 22-41 3-4-22Zm57-4 34-3 4 22-33 3-5-22Z"/></g>
+  <path stroke="#18b4ff" stroke-width="3" d="m113 275 340-29"/><path stroke="#b53dff" stroke-width="3" d="m155 293 294-24"/>
+</svg>

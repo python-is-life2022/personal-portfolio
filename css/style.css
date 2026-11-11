@@ -1790,6 +1790,10 @@ footer {
     background: url("../assets/images/sorena-competition.png") center center / cover no-repeat !important;
 }
 
+.project-art.simurgh-store {
+    background: url("../assets/images/simurgh-store.png") center center / cover no-repeat !important;
+}
+
 .project-art.digits {
     background-image: url('../assets/images/persian-digits.png');
     background-size: cover;

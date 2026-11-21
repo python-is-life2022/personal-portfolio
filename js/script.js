@@ -397,47 +397,41 @@ if (skillsTrack && skillCards.length > 0 && prevSkillButton && nextSkillButton) 
 /* ==========================================================
    5.1 FEATURED PROJECTS CAROUSEL
 ========================================================== */
-const projectsTrack = document.querySelector(".projects:not(.projects-page) .projects-grid");
-const projectCards = [...document.querySelectorAll(".projects:not(.projects-page) .project-card")];
+const projectsViewport = document.querySelector(".projects-viewport");
+const projectCards = [...document.querySelectorAll(".projects-slider .project-card")];
 const prevProjectButton = document.querySelector(".projects-prev");
 const nextProjectButton = document.querySelector(".projects-next");
 
-if (projectsTrack && projectCards.length > 0 && prevProjectButton && nextProjectButton) {
-  let currentProjectIndex = 0;
+if (projectsViewport && projectCards.length && prevProjectButton && nextProjectButton) {
+  function moveProjects(direction) {
+    const start = projectCards[0].getBoundingClientRect().left;
+    const max = projectsViewport.scrollWidth - projectsViewport.clientWidth;
+    const positions = projectCards.map((card) =>
+      Math.min(max, card.getBoundingClientRect().left - start)
+    );
+    const current = projectsViewport.scrollLeft;
+    const target = direction > 0
+      ? positions.find((position) => position > current + 1) ?? 0
+      : positions.reverse().find((position) => position < current - 1) ?? max;
 
-  function getVisibleProjectCount() {
-    if (window.innerWidth <= 500) return 1;
-    if (window.innerWidth <= 950) return 2;
-    return projectCards.length;
+    projectsViewport.scrollTo({
+      left: target,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
   }
 
-  function updateProjectsSlider() {
-    const visibleCount = getVisibleProjectCount();
-    const maxIndex = Math.max(0, projectCards.length - visibleCount);
-    currentProjectIndex = Math.min(currentProjectIndex, maxIndex);
+  prevProjectButton.addEventListener("click", () => moveProjects(-1));
+  nextProjectButton.addEventListener("click", () => moveProjects(1));
 
-    if (maxIndex === 0) {
-      projectsTrack.style.transform = "";
-      return;
-    }
+  projectsViewport.addEventListener("wheel", (event) => {
+    if (event.ctrlKey || event.shiftKey || Math.abs(event.deltaX) >= Math.abs(event.deltaY)) return;
 
-    const cardWidth = projectCards[0].getBoundingClientRect().width;
-    const gap = parseFloat(window.getComputedStyle(projectsTrack).gap) || 0;
-    projectsTrack.style.transform = `translateX(-${currentProjectIndex * (cardWidth + gap)}px)`;
-  }
+    const current = projectsViewport.scrollLeft;
+    const max = projectsViewport.scrollWidth - projectsViewport.clientWidth;
+    if ((event.deltaY < 0 && current <= 1) || (event.deltaY > 0 && current >= max - 1)) return;
 
-  nextProjectButton.addEventListener("click", () => {
-    const maxIndex = Math.max(0, projectCards.length - getVisibleProjectCount());
-    currentProjectIndex = currentProjectIndex >= maxIndex ? 0 : currentProjectIndex + 1;
-    updateProjectsSlider();
-  });
-
-  prevProjectButton.addEventListener("click", () => {
-    const maxIndex = Math.max(0, projectCards.length - getVisibleProjectCount());
-    currentProjectIndex = currentProjectIndex <= 0 ? maxIndex : currentProjectIndex - 1;
-    updateProjectsSlider();
-  });
-
-  window.addEventListener("resize", updateProjectsSlider);
-  updateProjectsSlider();
+    const unit = [1, 16, projectsViewport.clientWidth][event.deltaMode];
+    event.preventDefault();
+    projectsViewport.scrollLeft += event.deltaY * unit;
+  }, { passive: false });
 }
